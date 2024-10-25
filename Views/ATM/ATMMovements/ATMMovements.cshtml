@@ -1,0 +1,120 @@
+﻿@{
+    Layout = null;
+}
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<link href="~/css/ATMMovementsStyle.css" rel="stylesheet" asp-append-version="true"/>
+<body>
+    <div class="container">
+
+        <div class="left-section">
+            <p class="Top_text">¡SÉ PARTE DE NOSOTROS!</p>
+            <div class="puerco"><img src="~/img/a3212b9b-7fc8-423e-94ee-22ccb23b0b19 (1).png" /></div>
+            <p class="Bottom_text">Donde tus sueños financieros cobran vida</p>
+        </div>
+
+        <div class="right-section">
+            <h1 class="title">Movimientos</h1>
+            <p class="user-name">Sr/a Laura Muñoz</p>
+            <p class="description">Los movimientos de su cuenta son</p>
+
+            <table class="movements-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo de Movimiento</th>
+                        <th>Monto</th>
+                        <th>Cuenta Salida</th>
+                        <th>Cuenta Destino</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>07/09/2024</td>
+                        <td>RETIRO</td>
+                        <td>$30.000</td>
+                        <td>29350328</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>07/08/2024</td>
+                        <td>DEPÓSITO</td>
+                        <td>$20.000</td>
+                        <td>29350328</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                    <tr>
+                        <td>10/05/2024</td>
+                        <td>TRANSFERENCIA</td>
+                        <td>$1.000.000</td>
+                        <td>29350328</td>
+                        <td>4503929403</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="back-btn" id="BotonSalir">Regresar</button>
+        </div>
+    </div>
+    <script src="~/js/atmmovemets.js" asp-append-version="true"></script>
+    <script>
+        window.redirectToATM = '@Url.Action("ATM", "ATM")';
+    </script>
+</body>
+</html>

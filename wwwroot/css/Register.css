@@ -1,0 +1,85 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estructura principal */
+body, html {
+    height: 100%;
+}
+
+.right-section h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.right-section h3 {
+    font-size: 25px;
+    margin-bottom: 30px;
+    color: #737373;
+    text-align: center;
+    font-weight: 600;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #333;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #e94057, #f27121);
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+    .login-btn:hover {
+        background: linear-gradient(135deg, #f27121, #e94057);
+    }
+
+
+.right-section p {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.right-section a {
+    color: #e94057;
+    text-decoration: none;
+}
+
+    .right-section a:hover {
+        text-decoration: underline;
+    }

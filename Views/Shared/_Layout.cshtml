@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/layout.css" rel="stylesheet" asp-append-version="true"/>
+    <script src="https://kit.fontawesome.com/15b1ba9d54.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-section">
+            <div class="puerco">
+                <img src="~/img/a3212b9b-7fc8-423e-94ee-22ccb23b0b19 (1).png" />
+            </div>
+            <p>Donde tus sueños financieros cobran vida</p>
+        </div>
+
+        <div class="right-section">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/js/iniciodesesion.js"></script>
+</body>
+</html>

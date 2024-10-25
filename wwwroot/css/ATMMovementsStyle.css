@@ -1,0 +1,101 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-section {
+    flex: 1;
+    background: linear-gradient(135deg, #e94057, #f27121);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top:0;
+    overflow: hidden;
+    box-shadow: inset -20px 0px 15px rgba(0, 0, 0, 0.20);
+}
+.right-section {
+    text-align:center;
+    flex: 1;
+    background-color: white;
+    padding: 40px;
+    overflow-y: auto; /* Activa scroll vertical en la sección derecha */
+    height: 100vh;
+}
+
+    .right-section .title {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        padding-bottom: 40px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .right-section .user-name {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #737373;
+    }
+
+    .right-section .description {
+        font-size: 18px;
+        margin-bottom: 50px;
+        color: #737373;
+    }
+
+.movements-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+    .movements-table th, .movements-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .movements-table th {
+        background-color: #f27121;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .movements-table td {
+        background-color: #f9f9f9;
+    }
+
+    .movements-table tr:nth-child(even) td {
+        background-color: #f1f1f1;
+    }
+
+.back-btn {
+    background: linear-gradient(135deg, #e94057, #f27121);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+    .back-btn:hover {
+        background: linear-gradient(135deg, #f27121, #e94057);
+    }

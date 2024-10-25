@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estructura principal */
+body, html {
+    height: 100%;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: white;
+    transition: all 0.5s ease;
+}
+
+    .input-group i {
+        padding-left: 20px;
+        padding-right: 10px;
+        transition: all 0.5s ease;
+        position: fixed;
+    }
+
+    .input-group:hover i {
+        color: #e94057;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px 10px 10px 40px;
+        background-color: white;
+        border: 2px solid black;
+        outline: none;
+        border-radius: 10px;
+    }
+
+
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #e94057, #f27121);
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+    transition: background 0.3s ease;
+}
+
+    .login-btn:hover {
+        background: linear-gradient(135deg, #f27121, #e94057);
+    }
+
+.forgot-password {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.right-section p {
+    font-size: 15px;
+}
+
+.right-section a {
+    color: #e94057;
+    text-decoration: none;
+}
+
+    .right-section a:hover {
+        text-decoration: underline;
+    }

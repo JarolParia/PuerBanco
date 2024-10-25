@@ -1,0 +1,50 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+.right-section h2 {
+    position: absolute;
+    top: 40px;
+    font-size: 40px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    width: 80%;
+    margin-top: 30px;
+}
+
+.custom-icon {
+    width: 150px;
+    height: auto;
+    margin-left:40px;
+    transition: transform 0.3s ease;
+}
+
+    .custom-icon:hover {
+        transform: scale(1.1);
+    }
+
+.option p {
+    margin-top: 10px;
+    text-align:center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+    a:hover {
+        text-decoration: none;
+    }

@@ -1,0 +1,181 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estructura principal */
+body, html {
+    height: 100%;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Estilos para el Header */
+.header {
+    background: linear-gradient(135deg, #e94057, #f27121);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: padding 0.3s ease;
+    position: relative;
+}
+
+.userop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.header .userop .fa-user {
+    color: black;
+    background-color: white;
+    font-size: 30px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 100px;
+    padding: 5px;
+}
+
+/* Alineación del ícono del menú a la izquierda */
+.fa-bars {
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    left: 20px; /* Colocarlo al borde izquierdo */
+    font-size: 30px;
+}
+
+/* Menú lateral */
+.menu-lateral {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Oculto por defecto */
+    background: linear-gradient(180deg, #e94057, #f27121);
+    color: white;
+    padding: 15px;
+    transition: 0.3s;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .menu-lateral i.fa-xmark {
+        align-self: flex-end;
+        cursor: pointer;
+        color: rgb(49, 49, 49);
+        font-size: 30px;
+    }
+
+    .menu-lateral .menu-logo {
+        width: 200px;
+        margin-top: -20px;
+        display: block; /* Asegura que la imagen se comporte correctamente como bloque */
+        margin: 0 auto; /* Centra la imagen si es necesario */
+    }
+
+#filtro-datos label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+#filtro-datos input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+#filtro-datos button {
+    background-color: rgb(49, 49, 49);
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para el contenido principal */
+.contenido-principal {
+    margin-left: 0px;
+    padding: 20px;
+    transition: 0.3s;
+    flex-grow: 1;
+    overflow-y: auto; /* Permite desplazamiento vertical en la sección principal */
+}
+
+/* Tabla de clientes */
+.tabla-clientes, .tabla-cuentas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .tabla-clientes th, .tabla-clientes td, .tabla-cuentas th, .tabla-cuentas td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .tabla-clientes th, .tabla-cuentas th {
+        background-color: #f2f2f2;
+    }
+
+.view-accounts, .view-movements {
+    background-color: #4CAF50;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-accounts {
+    background-color: rgb(0, 162, 255);
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-accounts, .delete-account {
+    background-color: rgb(255, 68, 68);
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-abierto .menu-lateral {
+    left: 0;
+}
+
+.menu-abierto .contenido-principal {
+    margin-left: 250px; /* Deja espacio para el menú lateral */
+}
+
+.menu-abierto .header {
+    padding: 10px 20px;
+}

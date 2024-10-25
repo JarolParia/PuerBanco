@@ -1,0 +1,36 @@
+﻿@{
+}
+
+
+<link href="~/css/MenuStyle.css" rel="stylesheet" asp-append-version="true" />
+<h2>¿QUÉ DESEAS REALIZAR HOY?</h2>
+<div class="options-grid">
+    <div class="option">
+        <a asp-action="CreateAccount" asp-controller="CreateAccount" id="crearCuentaLink">
+            <img src="~/img/crearcuenta - editado.png" alt="Crear Cuenta" class="option-icon custom-icon"/>
+            <p>Crear Cuenta</p>
+        </a>
+    </div>
+
+    <div class="option">
+        <a asp-action="UpdateData" asp-controller="UpdateData" id="actualizarDatosLink">
+            <img src="~/img/actualizardatos - editado.png" alt="Actualizar datos" class="option-icon custom-icon" />
+            <p>Actualizar datos</p>
+        </a>
+    </div>
+
+    <div class="option">
+        <a asp-action="JoinAccount" asp-controller="JoinAccount" id="ingresarCuentaLink">
+            <img src="~/img/ingresar - editado.png" alt="ingresar a cuenta" class="option-icon custom-icon" />
+            <p>Ingresar a cuenta existente</p>
+        </a>
+    </div>
+
+    <div class="option">
+        <a asp-action="Index" asp-controller="Home" id="cerrarSesionLink">
+            <img src="~/img/cerrarsesion - editado.png" alt="Cerrar sesion" class="option-icon custom-icon" />
+            <p>Cerrar sesión</p>
+        </a>
+    </div>
+</div>
+

@@ -1,0 +1,33 @@
+﻿@{
+    var accountType = ViewData["AccountType"] as string;
+}
+
+<link href="~/css/ATMStyle.css" rel="stylesheet" asp-append-version="true"/>
+<h2>Bienvenido/a Karen Garzón</h2>
+<p>Seleccione el movimiento que desea realizar</p>
+<div class="Movements">
+    <button type="button" class="btnMovement" id="withdrawal-Btn" >Retirar</button>
+    <button type="button" class="btnMovement" id="Balance-Btn">Ver saldo</button>
+    <button type="button" class="btnMovement" id="Deposit-Btn">Depositar</button>
+    @if (accountType == "corriente")
+    {
+        <button type="button" class="btnMovement" id="Transfer-Btn">Transferir</button>
+    }
+    else
+    {
+        <button type="button" class="btnMovement" id="Interest-Btn">Calcular Intereses</button>
+    }
+    <button type="button" class="btnMovement" id="Movements-Btn">Ver movimientos</button>
+</div>
+<button type="button" class="out-btn" id="BotonSalir">Salir</button>
+
+<script src="~/js/ATMFY.js" asp-append-version="true"></script>
+<script>
+    window.redirectToMenu = '@Url.Action("Menu", "Menu")';
+    window.redirectToWithdrawal = '@Url.Action("ATMwithdrawal", "ATMwithdrawal")';
+    window.redirectToBalance = '@Url.Action("ATMBalance", "ATMBalance")';
+    window.redirectToInterest = '@Url.Action("ATMCheckinInterest", "ATMCheckinInterest")';
+    window.redirectToTransfer = '@Url.Action("ATMTransfer", "ATMTransfer")';
+    window.redirectToDeposit = '@Url.Action("ATMDeposit", "ATMDeposit")';
+    window.redirectToMovements = '@Url.Action("ATMMovements", "ATMMovements")';
+</script>

@@ -1,0 +1,23 @@
+﻿@{
+}
+<link href="~/css/atmtransferstyle.css" rel="stylesheet" asp-append-version="true"/>
+
+<h2>TRANSFERIR</h2>
+<p>Ingresa la cuenta de destino</p>
+
+<div class="input-container">
+    <input type="number" placeholder="# Cuenta" class="custom-input" required>
+</div>
+
+<p>Ingresa el monto a transferir</p>
+<div class="input-container">
+    <input type="number" placeholder="$ Cantidad" class="custom-input" required>
+</div>
+<div class="ActionButtons">
+    <button type="button" class="login-btn" id="Botonsalir">Salir</button>
+    <button type="button" class="login-btn">Transferir</button>
+</div>
+<script src="~/js/atmtransferfy.js" asp-append-version="true"></script>
+<script>
+    window.redirectToATM = '@Url.Action("ATM", "ATM")';
+</script>

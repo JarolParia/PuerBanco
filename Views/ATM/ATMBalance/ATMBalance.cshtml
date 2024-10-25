@@ -1,0 +1,11 @@
+﻿@{
+}
+<link href="~/css/ATMBalanceStyle.css" rel="stylesheet" asp-append-version="true"/>
+<h1>Sr/a Karen Garzon</h1>
+<p>El saldo actual de su cuenta es</p>
+<h2>$00000000000</h2>
+<button type="button" class="login-btn" id="Botonsalir">Regresar</button>
+<script src="~/js/atmbalancefy.js" asp-append-version="true"></script>
+<script>
+    window.redirectToATM = '@Url.Action("ATM", "ATM")';
+</script>

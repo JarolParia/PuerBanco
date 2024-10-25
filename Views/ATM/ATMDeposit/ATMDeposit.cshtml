@@ -1,0 +1,23 @@
+﻿@{
+}
+<link href="~/css/ATMDepositStyle.css" rel="stylesheet" asp-append-version="true"/>
+<h2>DEPOSITAR</h2>
+<p>Selecciona una de las opciones</p>
+<div class="Movements">
+    <button type="button" class="btnMovement" id="BotonInicioS">10.000</button>
+    <button type="button" class="btnMovement" id="BotonVerS">20.000</button>
+    <button type="button" class="btnMovement" id="BotonDeposit">50.000</button>
+    <button type="button" class="btnMovement" id="BotonInterest">100.000</button>
+    <h3>Depositar un monto diferente</h3>
+    <div class="input-container">
+        <input type="number" placeholder="$ Cantidad" class="custom-input" required>
+    </div>
+    <div class="ActionButtons">
+        <button type="button" class="login-btn" id="BotonSalir">Salir</button>
+        <button type="button" class="login-btn" id="BotonRetirar">Depositar</button>
+    </div>
+</div>
+<script src="~/js/ATMDeposit.js" asp-append-version="true"></script>
+<script>
+    window.redirectToATM = '@Url.Action("ATM", "ATM")';
+</script>
