@@ -1,25 +1,43 @@
-﻿@{
-}
+﻿@model Proyecto_Herramientas.Models.User
+
 <link href="~/css/JoinAccountStyle.css" rel="stylesheet" asp-append-version="true" />
 <h2>Esta es tu lista de cuentas</h2>
 <p>Selecciona la cuenta a la que deseas ingresar:</p>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+
 <div class="Accounts">
-    <label>
-        <input type="radio" name="cuenta" value="ahorros">
-        1382749 - Ahorros - 2,000,000.00$
-    </label><br>
-    <label>
-        <input type="radio" name="cuenta" value="corriente">
-        2384732 - Corriente - 20,000.00$
-    </label><br>
-    <label>
-        <input type="radio" name="cuenta" value="ahorros">
-        4732948 - Ahorros - 35,000,000.00$
-    </label><br>
+    @if (Model.Accounts != null && Model.Accounts.Any())
+    {
+        foreach (var account in Model.Accounts)
+        {
+            <label>
+                <input type="radio" name="cuenta" value="@account.AccountNumber" />
+                       
+                @account.AccountNumber - @account.AccountTypeName - @account.Balance.ToString("C")
+            </label>
+            <br />
+        }
+    }
+    else
+    {
+        <h3> No hay cuentas disponibles.</h3>
+
+    }
 </div>
+
 <div class="ActionButtons">
     <button type="button" class="login-btn" id="ReturnButton">Salir</button>
-    <button type="button" class="login-btn" id="JoinAccountButton">Ingresar</button>
+<form id="loginForm" method="post" action="@Url.Action("EnterAccount", "JoinAccount")">
+    <input type="hidden" name="accountNumber" id="accountNumberInput" />
+        <button type="submit" class="login-btn" id="JoinAccountButton">Ingresar</button>
+</form>
+
 </div>
 <script src="~/js/joinaccountfunctionality.js"></script>
 <script>

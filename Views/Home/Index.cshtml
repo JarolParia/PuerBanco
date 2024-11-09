@@ -1,26 +1,36 @@
-﻿@{
-    
+﻿﻿@{
+
 
 }
 
 <h2>BIENVENIDO/A AL BANCO MAS GRANDE DEL MUNDO</h2>
 <link href="~/css/login.css" rel="stylesheet" asp-append-version="true" />
-<form id="loginForm">
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+<form method="post" action="@Url.Action("Login", "Home")" id="loginForm">
     <div class="input-group">
-        <input type="email" placeholder="Correo electrónico" required>
+        <input type="email" name="Email" placeholder="Correo electrónico" required>
         <i class="fa-solid fa-envelope"></i>
     </div>
     <div class="input-group">
-        <input type="password" placeholder="Contraseña" required>
+        <input type="password" name="Password" placeholder="Contraseña" required>
         <i class="fa-solid fa-lock"></i>
         <span class="show-password"></span>
     </div>
-    <button type="button" class="login-btn" id="BotonInicioS" asp-action="GetMenu" asp-controller="Menu">Iniciar sesión</button>
+    <button type="submit" class="login-btn" id="BotonInicioS">Iniciar sesión</button>
 </form>
-<a asp-action="CRUD" asp-controller="CRUD" class="forgot-password">Recordar contraseña</a>
 <p>¿Todavía no tienes una cuenta? <a asp-action="Register" asp-controller="Register">Regístrate</a></p>
 <script src="https://kit.fontawesome.com/15b1ba9d54.js" crossorigin="anonymous"></script>
-<script src="~/js/IndexF.js" asp-append-version="true"></script>
+
 <script>
-    window.redirectToMenu = '@Url.Action("Menu", "Menu")';
+
 </script>

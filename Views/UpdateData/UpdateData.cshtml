@@ -1,48 +1,73 @@
-﻿@{
+﻿@model Proyecto_Herramientas.Models.User
+@{
 }
 <h2>Actualizar Datos</h2>
 <h3>Selecciona los datos que deseas cambiar</h3>
 <link href="~/css/UpdateDataStyle.css" rel="stylesheet" asp-append-version="true" />
-<div class="options">
-    <label>
-        <input type="radio" name="option" value="nombre" onclick="showInput('nombre')">
-        Nombre
-    </label>
-    <div id="nombreInput" class="hidden">
-        <input type="text" placeholder="Ingresa el nuevo nombre">
+
+<!-- Mostrar el mensaje de éxito si existe -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<!-- Mostrar el mensaje de error si existe -->
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="UpdateUserData" method="post" id="updateForm">
+    <div class="options">
+        <label>
+            <input type="radio" name="option" value="nombre" onclick="showInput('nombre')">
+            Nombre
+        </label>
+        <div id="nombreInput" class="hidden">
+            <h4>Nombre actual: @Model.FirstName</h4>
+            <input type="text" placeholder="Ingresa el nuevo nombre" name="firstName"> <!-- Asegúrate que el nombre es 'firstName' -->
+        </div>
+
+        <label>
+            <input type="radio" name="option" value="apellido" onclick="showInput('apellido')">
+            Apellido
+        </label>
+        <div id="apellidoInput" class="hidden">
+            <h4>Apellido actual: @Model.LastName</h4>
+            <input type="text" placeholder="Ingresa el nuevo apellido" name="lastName"> <!-- Asegúrate que el nombre es 'lastName' -->
+        </div>
+
+        <label>
+            <input type="radio" name="option" value="email" onclick="showInput('email')">
+            Email
+        </label>
+        <div id="emailInput" class="hidden">
+            <h4>Correo actual: @Model.Email</h4>
+            <input type="text" placeholder="Ingresa el nuevo email" name="email"> <!-- Asegúrate que el nombre es 'email' -->
+        </div>
+
+        <label>
+            <input type="radio" name="option" value="contrasena" onclick="showInput('contrasena')">
+            Contraseña
+        </label>
+        <div id="contrasenaInput" class="hidden">
+            <input type="password" placeholder="Ingresa la contraseña actual" name="currentPassword">
+            <input type="password" placeholder="Ingresa la nueva contraseña" name="newPassword">
+        </div>
     </div>
 
-    <label>
-        <input type="radio" name="option" value="apellido" onclick="showInput('apellido')">
-        Apellido
-    </label>
-    <div id="apellidoInput" class="hidden">
-        <input type="text" placeholder="Ingresa el nuevo apellido">
+    <div class="ActionButtons">
+        <button type="button" class="btn-actualizar" id="btnout" onclick="window.location='@Url.Action("Menu", "Menu")'">Salir</button>
+        <button type="submit" class="btn-actualizar" id="btnUpdate">Actualizar</button>
     </div>
+</form>
 
-    <label>
-        <input type="radio" name="option" value="email" onclick="showInput('email')">
-        Email
-    </label>
-    <div id="emailInput" class="hidden">
-        <input type="text" placeholder="Ingresa el nuevo email">
-    </div>
-
-
-    <label>
-        <input type="radio" name="option" value="contrasena" onclick="showInput('contrasena')">
-        Contraseña
-    </label>
-    <div id="contrasenaInput" class="hidden">
-        <input type="password" placeholder="Ingresa la contraseña actual">
-        <input type="password" placeholder="Ingresa la nueva contraseña">
-    </div>
-</div>
-<div class="ActionButtons">
-    <button class="btn-actualizar" id="btnout">Salir</button>
-    <button class="btn-actualizar">Actualizar</button>
-</div>
 <script src="~/js/updatedatafy.js" asp-append-version="true"></script>
+
 <script>
     window.redirectToMenu = '@Url.Action("Menu", "Menu")';
 </script>

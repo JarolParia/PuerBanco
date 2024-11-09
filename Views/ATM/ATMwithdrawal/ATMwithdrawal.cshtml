@@ -1,13 +1,23 @@
-﻿    @using Microsoft.AspNetCore.Mvc
-    @using Microsoft.AspNetCore.Http
-    @inject IHttpContextAccessor HttpContextAccessor
+﻿
 @{
-    var accountType = HttpContextAccessor.HttpContext?.Session?.GetString("AccountType") ?? string.Empty; // Recupéralo como string vacío si es nulo
-
 }
 <link href="~/css/atmwithdrawalstyle.css" rel="stylesheet" asp-append-version="true"/>
 <h2>RETIRO</h2>
 <p>Selecciona una de las opciones</p>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+<form asp-action="withdrawal" method="post">
 <div class="Movements">
     <button type="button" class="btnMovement" id="v-1">10.000</button>
     <button type="button" class="btnMovement" id="v-2">20.000</button>
@@ -15,13 +25,14 @@
     <button type="button" class="btnMovement" id="v-4">100.000</button>
     <h3>Retirar un monto diferente</h3>
     <div class="input-container">
-        <input type="number" placeholder="$ Cantidad" class="custom-input" required>
+            <input type="number" placeholder="$ Cantidad" name="amount" id="montoInput" class="custom-input" required>
     </div>
     <div class="ActionButtons">
         <button type="button" class="login-btn" id="Botonsalir">Salir</button>
-        <button type="button" class="login-btn" id="BotonRetirar">Retirar</button>
+        <button type="submit" class="login-btn" id="BotonRetirar">Retirar</button>
     </div>
 </div>
+</form>
 <script src="~/js/ATMWithdrawalFY.js" asp-append-version="true"></script>
 <script>
     window.redirectToMenu = '@Url.Action("ATM", "ATM")';

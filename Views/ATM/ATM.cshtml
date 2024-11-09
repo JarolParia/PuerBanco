@@ -1,24 +1,31 @@
 ﻿@{
-    var accountType = ViewData["AccountType"] as string;
+    
 }
+@model Proyecto_Herramientas.ViewModels.ATMViewModel
 
-<link href="~/css/ATMStyle.css" rel="stylesheet" asp-append-version="true"/>
-<h2>Bienvenido/a Karen Garzón</h2>
+<link href="~/css/ATMStyle.css" rel="stylesheet" asp-append-version="true" />
+<h2>Bienvenido/a @Model.User.FirstName
+</h2>
 <p>Seleccione el movimiento que desea realizar</p>
 <div class="Movements">
-    <button type="button" class="btnMovement" id="withdrawal-Btn" >Retirar</button>
+    <button type="button" class="btnMovement" id="withdrawal-Btn">Retirar</button>
     <button type="button" class="btnMovement" id="Balance-Btn">Ver saldo</button>
     <button type="button" class="btnMovement" id="Deposit-Btn">Depositar</button>
-    @if (accountType == "corriente")
+
+    @if (Model.Account.Type.TypeName == "Checking")
     {
+        <!-- Mostrar botón de Transferencia solo para cuentas corrientes -->
         <button type="button" class="btnMovement" id="Transfer-Btn">Transferir</button>
     }
     else
     {
+        <!-- Mostrar botón de Calcular Intereses solo para cuentas de Ahorros -->
         <button type="button" class="btnMovement" id="Interest-Btn">Calcular Intereses</button>
     }
     <button type="button" class="btnMovement" id="Movements-Btn">Ver movimientos</button>
 </div>
+
+<!-- Botón para salir -->
 <button type="button" class="out-btn" id="BotonSalir">Salir</button>
 
 <script src="~/js/ATMFY.js" asp-append-version="true"></script>

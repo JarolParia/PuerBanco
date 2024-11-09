@@ -1,94 +1,203 @@
-﻿@{
+﻿@model IEnumerable<dynamic>
+@{
     Layout = null;
 }
-<link href="~/css/CRUDStyle.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/CRUDStyle.css" rel="stylesheet" asp-append-version="true" />
 <body>
     <div class="contenedor">
-        <!-- Header -->
         <header id="main-header" class="header">
             <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
             <div class="userop">
                 <div class="info-usuario">
-                    <span>Pepito Pérez</span><br>
+                    <span>@ViewData["AdminName"]</span><br>
                     <span>Administrador</span>
                 </div>
-                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-user" onclick="toggleUserMenu()"></i>
             </div>
         </header>
 
-        <!-- Menú lateral -->
         <div id="menuLateral" class="menu-lateral">
             <i class="fa-solid fa-xmark" onclick="toggleMenu()"></i>
             <img src="/img/a3212b9b-7fc8-423e-94ee-22ccb23b0b19 (1).png" alt="Logo" class="menu-logo">
-            <h3>Filtrar datos</h3>
+            <h3>Historial de cambios</h3>
             <form id="filtro-datos">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre">
-
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido">
-
-                <label for="tipo-cuenta">Tipo de Cuenta</label>
-                <input type="text" id="tipo-cuenta">
-
-                <button type="submit">Filtrar</button>
+                <button type="submit" id="btn-history">Ver Historial</button>
             </form>
         </div>
-        <!-- Contenido de la página principal -->
+
         <div id="contenidoPrincipal" class="contenido-principal">
             <table class="tabla-clientes">
                 <thead>
                     <tr>
                         <th>Acción</th>
                         <th>ID Cliente</th>
+                        <th>Email</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Filas de ejemplo -->
-                    <tr>
-                        <td>
-                            <button class="action-btn view-accounts" onclick="mostrarCuentas(this)"><i class="fa-solid fa-eye"></i></button>
-                            <button class="action-btn edit-accounts"><i class="fa-solid fa-pen"></i></button>
-                            <button class="action-btn delete-accounts"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                        <td>1394302948</td>
-                        <td>Alberto</td>
-                        <td>López Loaiza</td>
-
-                    </tr>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (user.HasAccounts) // Solo mostramos el botón si tiene cuentas
+                                {
+                                    <button class="action-btn view-accounts" onclick="mostrarCuentas(this)">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                }
+                                <button type="button" class="action-btn edit-accounts" onclick="openEditUserModal('@user.UserID', '@user.FirstName', '@user.LastName', '@user.Email')">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </td>
+                            <td>@user.UserID</td>
+                            <td>@user.Email</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                        </tr>
+                        <tr class="account-row" style="display: none;">
+                            <td colspan="5">
+                                <table class="tabla-cuentas" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Acción</th>
+                                            <th>Cuenta</th>
+                                            <th>Tipo</th>
+                                            <th>Saldo</th>
+                                            <th>Activa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var account in user.Accounts)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @if (account.IsActive)
+                                                    {
+                                                        <form id="form-@account.AccountNumber" method="post" asp-action="ToggleAccountStatus" onsubmit="return toggleAccountStatus(@account.AccountNumber);">
+                                                            <input type="hidden" name="accountNumber" value="@account.AccountNumber" />
+                                                            <button type="submit" id="button-@account.AccountNumber" class="action-btn delete-account">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </button>
+                                                        </form>
+                                                    }
+                                                    else
+                                                    {
+                                                        <form id="form-@account.AccountNumber" method="post" asp-action="ToggleAccountStatus" onsubmit="return toggleAccountStatus(@account.AccountNumber);">
+                                                            <input type="hidden" name="accountNumber" value="@account.AccountNumber" />
+                                                            <button type="submit" id="button-@account.AccountNumber" class="action-btn active-account">
+                                                                <i class="fa-solid fa-check"></i>
+                                                            </button>
+                                                        </form>
+                                                    }
+                                                </td>
+                                                <td>@account.AccountNumber</td>
+                                                <td>@account.AccountType</td>
+                                                <td>@account.Balance.ToString("C")</td>
+                                                <td>
+                                                    @(account.IsActive ? "Sí" : "No")
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
-            </table>
-
-            <table class="tabla-cuentas" style="display: none;">
-                <thead>
-                    <tr>
-                        <th>Acción</th>
-                        <th>Num Cuenta</th>
-                        <th>Tipo Cuenta</th>
-                        <th>Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <button class="action-btn view-movements">
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button class="action-btn delete-account">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </td>
-                        <td>129475391</td>
-                        <td>Ahorro</td>
-                        <td>20,000.00$</td>
-                    </tr>
             </table>
         </div>
     </div>
 
+    <!-- Modal de edición de usuario -->
+    <div id="editUserModal" class="modal-container" style="display: none;">
+        <div class="modal-body">
+            <span class="close-btn" onclick="closeModal2()"><i class="fa-solid fa-xmark"></i></span>
+            <h2>Editar Usuario</h2><br />
+            <form id="editUser Form" method="post" asp-action="UpdateUser">
+                <input type="hidden" id="editUserId" name="userId">
+
+                <label for="editFirstName">Nombre:</label>
+                <input type="text" id="editFirstName" name="firstName"><br />
+
+                <label for="editLastName">Apellido:</label>
+                <input type="text" id="editLastName" name="lastName"><br />
+
+                <label for="editEmail">Correo electrónico:</label><br />
+                <input type="email" id="editEmail" name="email"><br />
+
+                <button type="submit">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Mostrar History -->
+    <div id="modal-History" class="modalH">
+        <div class="modalH-content">
+            <span class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            <p id="fieldName">History Change</p>
+            <div class="modalH-body">
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú desplegable de usuario -->
+    <div id="userMenu" class="user-menu">
+        <p><strong>@ViewData["AdminName"]</strong></p>
+        <p>Administrador</p>
+        <form asp-action="logout" asp-controller="Home" method="post">
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    </div>
 
     <script src="https://kit.fontawesome.com/15b1ba9d54.js" crossorigin="anonymous"></script>
     <script src="/js/CRUDFY.js" asp-append-version="true"></script>
+    <script>
+        function mostrarCuentas(button) {
+            const row = button.closest('tr');
+            let nextRow = row.nextElementSibling;
+
+            while (nextRow && nextRow.classList.contains('account-row')) {
+                nextRow.style.display = nextRow.style.display === 'none' ? '' : 'none';
+                nextRow = nextRow.nextElementSibling;
+            }
+        }
+
+        function toggleMenu() {
+            const contenedor = document.querySelector('.contenedor');
+            contenedor.classList.toggle('menu-abierto');
+        }
+
+        function toggleUserMenu() {
+            const userMenu = document.getElementById('userMenu');
+            const overlay = document.getElementById('overlay');
+            const isVisible = userMenu.style.display === 'block';
+
+            userMenu.style.display = isVisible ? 'none' : 'block';
+            overlay.style.display = isVisible ? 'none' : 'block';
+        }
+
+
+        function mostrarCuentas(button) {
+            var tablaCuentas = document.querySelector('.tabla-cuentas');
+            tablaCuentas.style.display = (tablaCuentas.style.display === "none" || tablaCuentas.style.display === "") ? "table" : "none";
+        }
+
+        function openEditUserModal(userId, firstName, lastName, email) {
+            // Llenar los campos del formulario con los datos del usuario
+            document.getElementById('editUserId').value = userId;
+            document.getElementById('editFirstName').value = firstName;
+            document.getElementById('editLastName').value = lastName;
+            document.getElementById('editEmail').value = email;
+
+            // Mostrar el modal
+            document.getElementById('editUserModal').style.display = 'flex';
+        }
+
+        function closeModal2() {
+            document.getElementById('editUserModal').style.display = 'none';
+        }
+
+    </script>
 </body>

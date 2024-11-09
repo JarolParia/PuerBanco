@@ -1,24 +1,22 @@
-﻿
-document.addEventListener("DOMContentLoaded", function () { // Espera a que el DOM esté completamente cargado
-    document.getElementById("JoinAccountButton").addEventListener("click", function () {
-        const radios = document.querySelectorAll('input[name="cuenta"]');
-        let selectedAccountType = null;
+﻿document.addEventListener("DOMContentLoaded", function () {
 
-        radios.forEach((radio) => {
-            if (radio.checked) {
-                selectedAccountType = radio.value;
-            }
-        });
+    // Capturamos el evento de clic del botón "Ingresar"
+        document.getElementById('JoinAccountButton').addEventListener('click', function(event) {
+            // Prevenir el comportamiento por defecto (enviar formulario)
+            event.preventDefault();
 
-        if (selectedAccountType) {
-            window.location.href = `/ATM/ATM?accountType=${selectedAccountType}`;
-        } else {
-            alert("Por favor, seleccione una cuenta antes de continuar.");
-        }
+        // Obtener el número de cuenta seleccionado
+        var selectedAccount = document.querySelector('input[name="cuenta"]:checked');
+
+        if (selectedAccount) {
+            // Guardamos el número de cuenta seleccionado en la sesión
+            document.getElementById('accountNumberInput').value = selectedAccount.value;
+        // Luego enviamos el formulario
+        document.getElementById('loginForm').submit();
+        } 
     });
 
     document.getElementById("ReturnButton").addEventListener("click", function () {
         window.location.href = window.redirectToMenu;
     });
 });
-

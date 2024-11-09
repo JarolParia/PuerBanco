@@ -37,7 +37,7 @@ label {
 }
 
 .Accounts {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .ActionButtons {
@@ -80,3 +80,15 @@ input[type="radio"] {
         background-color: black;
         border: 2px solid black;
     }
+
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}

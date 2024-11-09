@@ -1,34 +1,46 @@
 ﻿@{
-   
+    // Espacio para agregar cualquier lógica o directiva adicional si se necesita
 }
 
-<link href="~/css/register.css" rel="stylesheet" />
+<link href="~/css/register.css" rel="stylesheet" asp-append-version="true" />
+
+<!-- Encabezados -->
 <h2>REGISTRO</h2>
 <h3>Ingresa los siguientes datos para ser parte de PUERBANCO</h3>
 
-<form action="#" method="post">
-    <div class="input-group">
-        <input type="text" placeholder="Nombre" required>
+<!-- Mensaje de error -->
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
     </div>
-    <div class="input-group">
-        <input type="text" placeholder="Apellido" required>
-    </div>
-    <div class="input-group">
-        <input type="email" placeholder="Correo Electrónico" required>
+}
 
+<!-- Formulario de Registro -->
+<form action="@Url.Action("SignIn", "Register")" method="post">
+    <div class="input-group">
+        <input type="text" name="firstname" placeholder="Nombre" required>
     </div>
     <div class="input-group">
-        <input type="text" placeholder="Contraseña" required>
+        <input type="text" name="lastname" placeholder="Apellido" required>
     </div>
     <div class="input-group">
-        <input type="password" placeholder="Confirmar Contraseña" required>
-        <span class="show-password">👁️</span>
+        <input type="email" name="email" placeholder="Correo Electrónico" required>
+    </div>
+    <div class="input-group">
+        <input type="password" name="password" placeholder="Contraseña (4 digitos númericos)" required>
+    </div>
+    <div class="input-group">
+        <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
     </div>
     <button type="submit" class="login-btn" id="Register-btn">Registrar</button>
 </form>
+
+<!-- Enlace a la página de inicio de sesión -->
 <p>¿Ya tienes una cuenta? <a asp-action="Index" asp-controller="Home">Inicia sesión</a></p>
 
-<script src="~/js/registerfy.js" asp-append-version="true"></script>
-<script>
-    window.redirectToIndex = '@Url.Action("Index", "Home")';
-</script>

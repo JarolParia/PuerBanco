@@ -9,33 +9,6 @@ body, html {
     height: 100%;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-.left-section {
-    flex: 1;
-    background: linear-gradient(135deg, #e94057, #f27121);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    top:0;
-    overflow: hidden;
-    box-shadow: inset -20px 0px 15px rgba(0, 0, 0, 0.20);
-}
-.right-section {
-    text-align:center;
-    flex: 1;
-    background-color: white;
-    padding: 40px;
-    overflow-y: auto; /* Activa scroll vertical en la sección derecha */
-    height: 100vh;
-}
-
     .right-section .title {
         font-size: 32px;
         color: #333;
@@ -59,7 +32,7 @@ body, html {
     }
 
 .movements-table {
-    width: 100%;
+    width: 105%;
     border-collapse: collapse;
     margin-bottom: 30px;
 }
@@ -82,6 +55,26 @@ body, html {
 
     .movements-table tr:nth-child(even) td {
         background-color: #f1f1f1;
+    }
+
+    .movements-table th:nth-child(1),
+    .movements-table td:nth-child(1) {
+        width: 100px; /* Ajusta el ancho según tus necesidades */
+    }    .movements-table th:nth-child(2),
+    .movements-table td:nth-child(2) {
+        width: 150px; /* Ajusta el ancho según tus necesidades */
+    }
+    .movements-table th:nth-child(3),
+    .movements-table td:nth-child(3) {
+        width: 150px; /* Ajusta el ancho según tus necesidades */
+    }    
+    .movements-table th:nth-child(4),
+    .movements-table td:nth-child(4) {
+        width: 120px; /* Ajusta el ancho según tus necesidades */
+    }    
+    .movements-table th:nth-child(5),
+    .movements-table td:nth-child(5) {
+        width: 120px; /* Ajusta el ancho según tus necesidades */
     }
 
 .back-btn {

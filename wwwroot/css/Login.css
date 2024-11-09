@@ -92,3 +92,40 @@ form {
     .right-section a:hover {
         text-decoration: underline;
     }
+
+
+/* Estilos para mensajes de alerta */
+.alert.alert-danger {
+    color: #721c24; /* Color de texto para el mensaje */
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+    box-sizing: border-box;
+    background-color: #f8d7da;
+    color: #721c24;
+    margin: 0 auto 20px; /* Centrado y separación inferior */
+    padding: 15px 20px;
+}
+
+    /* Ícono de advertencia (opcional) */
+    .alert.alert-danger::before {
+        content: "??";
+        font-size: 30px;
+        margin-right: 20px;
+    }
+
+/* Mensaje de error en la vista centrada */
+.right-section .alert.alert-danger {
+    margin: 0 auto 20px; /* Centramos el mensaje en el contenedor */
+}
+
+
+.error-message {
+    color: #e94057; /* Color de mensaje de error */
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 600;
+}

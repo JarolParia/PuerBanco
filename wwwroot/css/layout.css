@@ -11,22 +11,23 @@ body, html {
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
 }
 
+/* Sección izquierda */
 .left-section {
-    flex: 1;
+    flex: 0 0 40%; /* Establece que ocupe el 50% del ancho */
     background: linear-gradient(135deg, #e94057, #f27121);
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
+    position: sticky; /* Fija la sección */
+    top: 0; /* Se mantiene en la parte superior al hacer scroll */
     box-shadow: inset -20px 0px 15px rgba(0, 0, 0, 0.20);
+    overflow: hidden; /* Oculta el desbordamiento */
 }
-
 
 .logo {
     width: 150px;
@@ -34,6 +35,7 @@ body, html {
     margin-bottom: 20px;
 }
 
+/* Efectos decorativos en la izquierda */
 .left-section::before {
     content: "";
     position: absolute;
@@ -64,9 +66,9 @@ body, html {
     text-align: center;
 }
 
-
+/* Sección derecha */
 .right-section {
-    flex: 1; 
+    flex: 0 0 60%; /* Establece que ocupe el 50% del ancho */
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -74,6 +76,8 @@ body, html {
     align-items: center;
     padding: 40px;
     box-shadow: -20px 0px 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Activa el scroll vertical */
+    height: 100vh; /* Asegura que ocupa toda la altura de la ventana */
 }
 
     .right-section h2 {
@@ -83,21 +87,52 @@ body, html {
         text-align: center;
     }
 
+    .right-section h3 {
+        font-size: 25px;
+        margin-bottom: 20px;
+        color: #737373;
+        text-align: center;
+        font-weight: 600;
+    }
 
-.right-section {
-    flex: 1;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    box-shadow: -20px 0px 20px rgba(0, 0, 0, 1);
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
 }
 
-    .right-section h2 {
-        font-size: 50px;
-        margin-bottom: 80px;
-        color: #333;
-        text-align: center;
+    .input-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #333;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+.login-btn {
+    background: linear-gradient(135deg, #e94057, #f27121);
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+    .login-btn:hover {
+        background: linear-gradient(135deg, #f27121, #e94057);
+    }
+
+.right-section p {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.right-section a {
+    color: #e94057;
+    text-decoration: none;
+}
+
+    .right-section a:hover {
+        text-decoration: underline;
     }

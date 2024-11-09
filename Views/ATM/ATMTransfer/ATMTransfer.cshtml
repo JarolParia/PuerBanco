@@ -1,22 +1,36 @@
 ﻿@{
 }
-<link href="~/css/atmtransferstyle.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/atmtransferstyle.css" rel="stylesheet" asp-append-version="true" />
 
 <h2>TRANSFERIR</h2>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 <p>Ingresa la cuenta de destino</p>
+<form asp-action="Transfer" method="post">
+    <div class="input-container">
+        <input type="number" placeholder="# Cuenta" name="DestinyAccountNumber" class="custom-input" required>
+    </div>
 
-<div class="input-container">
-    <input type="number" placeholder="# Cuenta" class="custom-input" required>
-</div>
-
-<p>Ingresa el monto a transferir</p>
-<div class="input-container">
-    <input type="number" placeholder="$ Cantidad" class="custom-input" required>
-</div>
-<div class="ActionButtons">
-    <button type="button" class="login-btn" id="Botonsalir">Salir</button>
-    <button type="button" class="login-btn">Transferir</button>
-</div>
+    <p>Ingresa el monto a transferir</p>
+    <div class="input-container">
+        <input type="number" placeholder="$ Cantidad" name="amount" class="custom-input" required>
+    </div>
+    <div class="ActionButtons">
+        <button type="button" class="login-btn" id="Botonsalir">Salir</button>
+        <button type="submit" class="login-btn">Transferir</button>
+    </div>
+</form>
 <script src="~/js/atmtransferfy.js" asp-append-version="true"></script>
 <script>
     window.redirectToATM = '@Url.Action("ATM", "ATM")';

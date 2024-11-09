@@ -70,9 +70,10 @@ input[type="radio"] {
 .ActionButtons {
     display: flex;
     flex-direction: row;
-    gap: 200px;
+    gap: 150px;
     position: absolute;
     bottom: 50px;
+    left:50%;
 }
 
 .login-btn {

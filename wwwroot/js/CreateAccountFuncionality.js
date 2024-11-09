@@ -1,5 +1,5 @@
 ﻿function selectAccount(accountType) {
-    const radios = document.querySelectorAll('input[name="tipo"]');
+    const radios = document.querySelectorAll('input[name="typeId"]');
     radios.forEach((radio) => {
         radio.checked = false;
     });
