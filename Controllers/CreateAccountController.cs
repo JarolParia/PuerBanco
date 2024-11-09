@@ -27,6 +27,14 @@ namespace Proyecto_Herramientas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int typeId)
         {
+
+            if (typeId != 1 && typeId != 2)
+            {
+                // Agrega un mensaje de error que se mostrará en la vista
+                ModelState.AddModelError("typeId", "Debe seleccionar un tipo de cuenta.");
+                return View("CreateAccount"); // Devuelve la misma vista con el mensaje de error
+            }
+
             // Obtiene el userId de la sesión
             var userId = HttpContext.Session.GetInt32("UserID");
 
@@ -78,7 +86,6 @@ namespace Proyecto_Herramientas.Controllers
                 };
                 account.CheckingAccount = checkingAccount; // Asocia la cuenta corriente con la cuenta general
             }
-
             // Agrega la cuenta y guarda los cambios en la base de datos
             user.Accounts.Add(account);
             await _context.SaveChangesAsync();

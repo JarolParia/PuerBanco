@@ -13,11 +13,9 @@ body, html {
 
 .right-section h2 {
     font-size: 50px;
-    margin-bottom: 80px;
+    margin-top:-50px;
     color: #333;
     text-align: center;
-    position: absolute;
-    top:10%;
 }
 
 .Accounts {
@@ -27,7 +25,7 @@ body, html {
     flex-direction: row;
     gap: 150px;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .SavingAccount, .CheckingAccount {
@@ -92,3 +90,32 @@ input[type="radio"] {
     .login-btn:hover {
         background: linear-gradient(135deg, #f27121, #e94057);
     }
+
+.alert.alert-danger {
+    color: #721c24; /* Color de texto para el mensaje */
+    background-color: #f8d7da; /* Color de fondo */
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+    box-sizing: border-box;
+    margin: 0 auto 20px; /* Centrado y separación inferior */
+    padding: 15px 20px;
+}
+
+    /* Ícono de advertencia */
+    .alert.alert-danger::before {
+        content: "⚠️"; /* Puedes usar ⚠️ o cualquier otro símbolo */
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+/* Clase para otros mensajes de error en la página */
+.error-message {
+    color: #e94057; /* Color para mensajes de error adicionales */
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 600;
+}

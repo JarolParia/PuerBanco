@@ -11,9 +11,6 @@
     }
 }
 
-document.getElementById("CreateAccount").addEventListener("click", function () {
-    window.location.href = "Menu"
-})
 
 document.getElementById('btn-outca').addEventListener('click', function () {
     window.location.href = window.redirectToMenu; 

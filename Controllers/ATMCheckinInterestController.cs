@@ -41,15 +41,13 @@ namespace Proyecto_Herramientas.Controllers
             // Calcular el interés solo si es una cuenta de ahorros
             if (account.SavingAccount != null)
             {
-                decimal tasaInteres = 0.10m;  // 10% de interés fijo
-                decimal interesGenerado = account.Balance * tasaInteres;  // Calculamos el interés
+  // 10% de interés fijo
+                decimal interesGenerado = (account.Balance * account.SavingAccount.InterestRate)/100;  // Calculamos el interés
 
-                // Actualizamos el saldo final después de sumar el interés
-                decimal saldoFinal = account.Balance + interesGenerado;
+
 
                 // Guardar los valores en el ViewModel
                 ViewBag.InteresGenerado = interesGenerado;
-                ViewBag.SaldoFinal = saldoFinal;
             }
 
             // Crear el ViewModel con la cuenta y el usuario

@@ -1,8 +1,13 @@
 ﻿@{
+    var typeIdError = ViewData.ModelState["typeId"]?.Errors.FirstOrDefault()?.ErrorMessage;
 }
 
 <h2>Seleccione el tipo de cuenta que desea crear</h2>
 <link href="~/css/CreateAcStyle.css" rel="stylesheet" asp-append-version="true" />
+@if (!string.IsNullOrEmpty(typeIdError))
+{
+    <div class="alert alert-danger">@typeIdError</div>
+}
 <form method="post" asp-action="Create">
     <div class="Accounts">
         <div class="SavingAccount" onclick="selectAccount('ahorros')">
