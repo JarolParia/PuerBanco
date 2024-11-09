@@ -307,6 +307,7 @@ body, html {
     color: #333; /* Color del botón */
     cursor: pointer;
     transition: color 0.3s ease;
+
 }
 
     .close-btn:hover {
@@ -322,6 +323,7 @@ body, html {
     border: 1px solid #ddd; /* Borde gris claro */
     border-radius: 5px; /* Bordes redondeados */
     transition: border-color 0.3s ease; /* Transición suave */
+    
 }
 
     .modal-body input[type="text"]:focus,
@@ -339,6 +341,7 @@ body, html {
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cursor de mano */
     transition: background-color 0.3s ease; /* Transición suave */
+    margin-top:10px;
 }
 
     .modal-body button[type="submit"]:hover {

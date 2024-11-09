@@ -12,11 +12,9 @@ body, html {
     .right-section .title {
         font-size: 32px;
         color: #333;
-        margin-bottom: 10px;
         text-transform: uppercase;
-        padding-bottom: 40px;
         width: 100%;
-        text-align: center;
+        text-align:center;
     }
 
     .right-section .user-name {
@@ -31,12 +29,19 @@ body, html {
         color: #737373;
     }
 
-.movements-table {
-    width: 105%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
+.table-container {
+    width: 100%; /* Puedes ajustar el ancho según tus necesidades */
+    max-height: 400px; /* Altura máxima fija para el contenedor */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    margin: 0 auto; /* Centra el contenedor si es necesario */
+    margin-bottom:20px;
 }
 
+/* Estilo para la tabla */
+.movements-table {
+    width: 100%; /* Ocupa el ancho total del contenedor */
+    border-collapse: collapse;
+}
     .movements-table th, .movements-table td {
         border: 1px solid #ddd;
         padding: 10px;
